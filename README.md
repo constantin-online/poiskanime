@@ -37,6 +37,7 @@ GitHub: https://github.com/constantin-online/poiskanime
 # Anime Search — Modern Online Player
 A fast and convenient web client for searching and watching anime, doramas, and Asian series using the Kodik API.
 Clean minimalist design, built-in player, excellent responsiveness, and no unnecessary elements — everything for comfortable viewing.
+
 ✨ Features
 
 Instant search by title
