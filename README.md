@@ -31,7 +31,8 @@ Kodik API
 Ссылки
 
 Почта для связи: corporationofgoodandevil@gmail.com
-GitHub: https://github.com/constantin-online/poiskanime
+GitHub: https://github.com/constantin-online/poiskanime страница проекта
+GitHub альтернатива основного Посковика: https://constantin-online.github.io/poiskanime/
 Группа VK: https://vk.com/public222341639
 **************************************************************************
 # Anime Search — Modern Online Player
