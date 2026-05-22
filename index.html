@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Бесплатный поиск и просмотр аниме и дорам онлайн. Удобный плеер, большой каталог аниме, до[...]
-  <meta name="keywords" content="аниме онлайн, смотреть аниме, дорамы онлайн, аниме бесплатно, kodik, аниме 2025, дорамы с русской [...]
+  <meta name="description" content="Бесплатный поиск и просмотр аниме и дорам онлайн. Удобный плеер, большой каталог аниме, дорам, сериалов. Смотрите в хорошем качестве без регистрации.">
+  <meta name="keywords" content="аниме онлайн, смотреть аниме, дорамы онлайн, аниме бесплатно, аниме 2025, дорамы с русской озвучкой, онлайн плеер аниме">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Поиск аниме — смотреть онлайн бесплатно">
-  <meta property="og:description" content="Большой каталог аниме и дорам с удобным плеером. Ищите и смотрите любимые тайтлы в хор[...]
+  <meta property="og:description" content="Большой каталог аниме и дорам с удобным плеером. Ищите и смотрите любимые тайтлы в хорошем качестве.">
   <meta property="og:type" content="website">
   
   <title>Поиск аниме — смотреть онлайн бесплатно</title>
@@ -39,15 +39,6 @@
       </button>
     </div>
 
-    <!-- Плеер -->
-    <div id="playerContainer" class="hidden mb-8 bg-gray-900 rounded-3xl overflow-hidden">
-      <div class="p-4 border-b border-gray-800 flex justify-between items-center">
-        <h2 id="playerTitle" class="text-lg md:text-xl font-bold"></h2>
-        <button onclick="closePlayer()" class="text-3xl px-4 text-gray-400 hover:text-white">✕</button>
-      </div>
-      <iframe id="playerFrame" class="w-full aspect-video"></iframe>
-    </div>
-
     <div id="results" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-3 sm:gap-4 md:gap-6"></div>
 
     <div id="pagination" class="flex justify-center gap-4 mt-10 hidden">
@@ -59,7 +50,7 @@
   <!-- Футер -->
   <footer class="mt-12 py-8 text-center text-gray-500 text-sm border-t border-gray-800">
     <p class="mb-2">
-      Все материалы взяты из открытых источников. Данный проект создан исключительно в образовательных целях.<b[...]
+      Все материалы взяты из открытых источников. Данный проект создан исключительно в образовательных целях.<br>
       Администрация проекта не несёт ответственности за размещённый контент.
     </p>
     <p class="mt-3">
@@ -67,17 +58,32 @@
       <a href="mailto:corporationofgoodandevil@gmail.com" class="hover:text-purple-400">corporationofgoodandevil@gmail.com</a>
     </p>
     <div class="flex justify-center gap-6 mt-4">
-      <a href="https://github.com/constantin-online/online-player" target="_blank" class="hover:text-purple-400">GitHub</a>
-      <a href="https://vk.com/bitcast" target="_blank" class="hover:text-purple-400">Группа VK</a>
+      <a href="https://github.com/constantin-online/poiskanime" target="_blank" class="hover:text-purple-400">GitHub</a>
+      <a href="https://vk.com/public222341639" target="_blank" class="hover:text-purple-400">Группа VK</a>
     </div>
     <p class="mt-6 text-xs text-gray-600">© 2026 • Все права принадлежат правообладателям</p>
   </footer>
 
-  <!-- SEO невидимый текст -->
+  <!-- SEO невидимый текст + ключевые слова -->
   <div style="display:none; visibility:hidden; position:absolute; height:0; overflow:hidden;">
     <h1>Смотреть аниме онлайн бесплатно в хорошем качестве</h1>
-    <p>Большой каталог аниме и дорам. Новинки аниме 2025 и 2026 года, популярные тайтлы, русские озвучки. Удобный пои[...]
-    <p>Ключевые слова: аниме онлайн, дорамы онлайн, смотреть аниме бесплатно, аниме 2025, кодик плеер, аниме с русск[...]
+    <p>Большой каталог аниме и дорам. Новинки аниме 2025 и 2026 года, популярные тайтлы, русские озвучки. Удобный поиск и встроенный плеер.</p>
+    
+    <p>аниме смотреть онлайн, новые аниме 2025 2026, дорамы с русской озвучкой, аниме в хорошем качестве, 
+    онлайн аниме бесплатно hd, топ аниме всех времён, аниме без рекламы, kodik аниме, сезонные аниме, 
+    где смотреть аниме онлайн бесплатно, аниме с субтитрами, лучшие романтические дорамы, 
+    шounen аниме 2025, ise kai аниме, аниме про школу</p>
+  </div>
+
+  <!-- Встроенный плеер -->
+  <div id="playerModal" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-50 p-4">
+    <div class="w-full max-w-5xl bg-gray-900 rounded-3xl overflow-hidden">
+      <div class="p-4 border-b border-gray-800 flex justify-between items-center">
+        <h2 id="modalTitle" class="text-lg md:text-xl font-bold"></h2>
+        <button onclick="closePlayer()" class="text-3xl px-4 text-gray-400 hover:text-white">✕</button>
+      </div>
+      <iframe id="playerFrame" class="w-full aspect-video" allowfullscreen></iframe>
+    </div>
   </div>
 
   <script>
@@ -122,7 +128,6 @@
     function displayResults(results, nextPageUrl = null) {
       const container = document.getElementById("results");
       container.innerHTML = "";
-      closePlayer();
 
       const uniqueResults = removeDuplicates(results);
 
@@ -165,14 +170,13 @@
       if (!link) return alert("Ссылка на плеер не найдена");
 
       let fullLink = link.startsWith("//") ? "https:" + link : link;
-      document.getElementById("playerTitle").textContent = item.title || "Просмотр";
+      document.getElementById("modalTitle").textContent = item.title || "Просмотр";
       document.getElementById("playerFrame").src = fullLink;
-      document.getElementById("playerContainer").classList.remove("hidden");
-      document.getElementById("playerContainer").scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById("playerModal").classList.remove("hidden");
     }
 
     function closePlayer() {
-      document.getElementById("playerContainer").classList.add("hidden");
+      document.getElementById("playerModal").classList.add("hidden");
       document.getElementById("playerFrame").src = "";
     }
 
@@ -181,7 +185,6 @@
       document.getElementById("results").innerHTML = "";
       document.getElementById("pagination").classList.add("hidden");
       currentNextPage = null;
-      closePlayer();
     }
 
     window.onload = () => {
