@@ -42,31 +42,29 @@
 
     if (dataStr) {
       const item = JSON.parse(decodeURIComponent(dataStr));
-      const mat = item.material_data || item;
-
-      saveToHistory(item);
+      const mat = item.material_data || {};
 
       let html = `
         <div class="max-w-6xl mx-auto">
           <div class="flex flex-col lg:flex-row gap-10">
             <!-- Постер -->
             <div class="lg:w-96 flex-shrink-0">
-              <img src="${mat.poster_url || item.poster || ''}" 
+              <img src="${mat.poster_url || ''}" 
                    class="w-full rounded-3xl shadow-2xl" 
                    onerror="this.src='https://via.placeholder.com/400x600?text=No+Poster'">
             </div>
 
-            <!-- Информация -->
+            <!-- Основная информация -->
             <div class="flex-1">
               <h1 class="text-4xl font-bold mb-3">${item.title || mat.title || 'Без названия'}</h1>
               <p class="text-2xl text-gray-400 mb-8">${item.year || mat.year || ''}</p>
 
               ${mat.description ? 
-                `<p class="leading-relaxed text-gray-300 text-lg mb-10">${mat.description}</p>` : ''}
+                `<p class="leading-relaxed text-gray-300 text-lg">${mat.description}</p>` : ''}
 
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-sm">
+              <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
                 ${mat.genres ? `<div><strong>Жанры:</strong><br>${mat.genres.join(', ')}</div>` : ''}
-                ${mat.actors ? `<div><strong>Актёры:</strong><br>${mat.actors.slice(0, 12).join(', ')}</div>` : ''}
+                ${mat.actors ? `<div><strong>Актёры:</strong><br>${mat.actors.slice(0, 10).join(', ')}</div>` : ''}
                 ${mat.directors ? `<div><strong>Режиссёры:</strong><br>${mat.directors.join(', ')}</div>` : ''}
                 ${mat.kinopoisk_rating ? `<div><strong>КиноПоиск:</strong> ${mat.kinopoisk_rating}</div>` : ''}
               </div>
@@ -74,7 +72,7 @@
           </div>
 
           <!-- Плеер -->
-          <div class="mt-16">
+          <div class="mt-14">
             <h2 class="text-2xl font-semibold mb-5">Плеер</h2>
             <iframe src="${item.link.startsWith('//') ? 'https:' + item.link : item.link}" 
                     class="w-full aspect-video rounded-3xl" 
@@ -84,22 +82,6 @@
       `;
 
       document.getElementById("content").innerHTML = html;
-    }
-
-    function saveToHistory(item) {
-      let history = JSON.parse(localStorage.getItem('watchHistory') || '[]');
-      history = history.filter(i => i.id !== item.id);
-      
-      history.unshift({
-        id: item.id,
-        title: item.title || (item.material_data && item.material_data.title),
-        year: item.year,
-        poster: item.material_data ? item.material_data.poster_url : item.poster,
-        link: item.link
-      });
-      
-      if (history.length > 50) history.pop();
-      localStorage.setItem('watchHistory', JSON.stringify(history));
     }
   </script>
 </body>
