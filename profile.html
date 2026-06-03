@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой профиль</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0a0a0a] text-white min-h-screen p-6">
+
+  <div class="max-w-7xl mx-auto">
+    <button onclick="window.close()" class="mb-8 text-purple-400 hover:text-purple-500 text-lg">← Назад</button>
+    
+    <h1 class="text-4xl font-bold mb-10">Мой профиль</h1>
+
+    <h2 class="text-2xl font-semibold mb-6">История просмотров</h2>
+    <div id="history" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-6"></div>
+  </div>
+
+  <script>
+    function loadProfile() {
+      const history = JSON.parse(localStorage.getItem('watchHistory') || '[]');
+      const historyDiv = document.getElementById('history');
+
+      if (history.length === 0) {
+        historyDiv.innerHTML = '<p class="text-gray-400 col-span-full text-center py-20">История просмотров пуста</p>';
+        return;
+      }
+
+      historyDiv.innerHTML = "";
+
+      history.slice(0, 50).forEach(item => {
+        historyDiv.appendChild(createCard(item));
+      });
+    }
+
+    function createCard(item) {
+      const div = document.createElement('div');
+      div.className = "bg-gray-900 rounded-2xl overflow-hidden cursor-pointer hover:ring-2 hover:ring-purple-500 transition-all";
+      div.innerHTML = `
+        <img src="${item.poster || ''}" class="w-full h-64 object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold line-clamp-2">${item.title}</h3>
+          <p class="text-sm text-gray-400">${item.year || ''}</p>
+        </div>
+      `;
+      div.onclick = () => {
+        const dataStr = encodeURIComponent(JSON.stringify(item));
+        window.open(`detail.html?data=${dataStr}`, '_blank');
+      };
+      return div;
+    }
+
+    window.onload = loadProfile;
+  </script>
+</body>
+</html>
